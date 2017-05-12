@@ -44,11 +44,16 @@ namespace GalaxyBizz.Processor
             }
             questionValue = valueHolder.Sum();
             string message = inputExtract[1] + " is " + questionValue;
-            if (metalValue != 0)
+            if (metalValue > 0)
             {
                 questionValue = valueHolder.Sum() * metalValue;
                 message = inputExtract[1] + " is " + questionValue + " credits";
             }
+            if (questionValue == 0)
+            {
+                return GalaxyModel.NotLegalValue;
+            }
+
             return message;
         }
     }

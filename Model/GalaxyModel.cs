@@ -14,5 +14,7 @@ namespace GalaxyBizz.Model
             Metals = new List<Metal>();
             Questions = new List<Question>();
         }
+
+        public static string NotLegalValue = "I have no idea what you are talking about";
     }
 }

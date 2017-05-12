@@ -9,7 +9,7 @@ namespace GalaxyBizz.ReferanceData
     public class RomanNumberSystem
     {
         Dictionary<char, int> RomanNumarals;
-        public static string NotLegalValue = "I have no idea what you are talking about";
+       
         public RomanNumberSystem()
         {
             RomanNumarals = new Dictionary<char, int>();

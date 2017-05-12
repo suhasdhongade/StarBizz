@@ -26,7 +26,7 @@ namespace GalaxyBizz
             UserInput.Add("how many Credits is glob prok Silver ?");
             UserInput.Add("how many Credits is glob prok Gold ?");
             UserInput.Add("how many Credits is glob prok Iron ?");
-            UserInput.Add("how much wood could a woodchuck chuck if a woodchuck could chuck wood ?");
+            UserInput.Add("how much wood could a woodchuck chuck is if a woodchuck could chuck wood ?");
 
             GalaxyNumberSytemController controller = new GalaxyNumberSytemController();
             foreach (string line in UserInput)
