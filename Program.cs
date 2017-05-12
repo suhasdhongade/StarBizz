@@ -13,7 +13,7 @@ namespace GalaxyBizz
 
         {
             List<string> UserInput = new List<string>();
-            
+
             UserInput.Add("glob is I");
             UserInput.Add("prok is V");
             UserInput.Add("pish is X");
@@ -28,7 +28,7 @@ namespace GalaxyBizz
             foreach (string line in UserInput)
             {
                 dynamic output = controller.StartProcess(line);
-            } 
+            }
 
         }
     }

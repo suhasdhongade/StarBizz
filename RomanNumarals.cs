@@ -40,7 +40,7 @@ namespace GalaxyBizz
     public class Metal
     {
         public string MetalName { get; set; }
-        public double MetalValue { get; set; }
+        public int MetalValue { get; set; }
 
     }
 
@@ -94,7 +94,7 @@ namespace GalaxyBizz
     {
         public dynamic Process(GalaxyModel model, string userEnteredLine, List<string> inputExtract)
         {
-            double metalValue = 0;
+            int metalValue = 0;
             var partOne = Regex.Split(inputExtract[0], " ").ToList();
             string metalName = string.Empty;
 
@@ -109,7 +109,7 @@ namespace GalaxyBizz
 
             var partTwo = Regex.Split(inputExtract[1], " ").ToList();
 
-            var credits = Convert.ToInt32(partTwo[0]); 
+            var credits = Convert.ToInt32(partTwo[0]);
 
             metalValue = credits / metalValue;
 
@@ -122,7 +122,42 @@ namespace GalaxyBizz
     {
         public dynamic Process(GalaxyModel model, string userEnteredLine, List<string> inputExtract)
         {
-            throw new NotImplementedException();
+            var partOne = Regex.Split(inputExtract[1], " ").ToList();
+            double questionValue = 0;
+            List<double> valueHolder = new List<double>();
+
+            foreach (string symbol in partOne)
+            {
+                var result = model.GalaxySymbols.Exists(item => item.SymbolName.Equals(symbol));
+                if (result)
+                {
+                    valueHolder.Add(model.GalaxySymbols.Where(item => item.SymbolName.Equals(symbol)).Select(item => item.SymbolValue).FirstOrDefault());
+                }
+                else
+                {
+                    valueHolder.Add(model.Metals.Where(item => item.MetalName.Equals(symbol)).Select(item => item.MetalValue).FirstOrDefault());
+
+                }
+
+            }
+
+            for (int i = 0; i < valueHolder.Count; i++)
+            {
+                if (i == valueHolder.Count - 1)
+                    break;
+
+                double currentValue = valueHolder[i];
+                double nextValue = valueHolder[i + 1];
+
+                if (currentValue < nextValue)
+                {
+                    valueHolder[i] = valueHolder[i] * (-1);
+                }
+
+            }
+            questionValue = valueHolder.Sum();
+
+            return 0;
         }
     }
 
