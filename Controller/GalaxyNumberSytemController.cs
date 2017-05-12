@@ -32,7 +32,7 @@ namespace GalaxyBizz.Controller
             }
             else if (inputExtract[1].ToUpper().EndsWith("?"))  ///Questions
             {
-                inputExtract[1] = inputExtract[1].Replace("?", "");
+                inputExtract[1] = inputExtract[1].Replace("?", "").Trim();
                 return questionObj.Process(model, UserEnteredLine, inputExtract);
             }
             else if (inputExtract[1].Length == 1) //Reference Data

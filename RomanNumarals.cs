@@ -40,7 +40,7 @@ namespace GalaxyBizz
     public class Metal
     {
         public string MetalName { get; set; }
-        public int MetalValue { get; set; }
+        public double MetalValue { get; set; }
 
     }
 
@@ -94,7 +94,7 @@ namespace GalaxyBizz
     {
         public dynamic Process(GalaxyModel model, string userEnteredLine, List<string> inputExtract)
         {
-            int metalValue = 0;
+            List<double> metalValue = new List<double>();
             var partOne = Regex.Split(inputExtract[0], " ").ToList();
             string metalName = string.Empty;
 
@@ -102,18 +102,38 @@ namespace GalaxyBizz
             {
                 var result = model.GalaxySymbols.Exists(item => item.SymbolName.Equals(symbol));
                 if (result)
-                    metalValue += model.GalaxySymbols.Where(item => item.SymbolName.Equals(symbol)).Select(item => item.SymbolValue).FirstOrDefault();
+                {
+                    metalValue.Add(model.GalaxySymbols.Where(item => item.SymbolName.Equals(symbol)).Select(item => item.SymbolValue).FirstOrDefault());
+                }
                 else
+                {
                     metalName = symbol;
+                }
             }
+
+            for (int i = 0; i < metalValue.Count; i++)
+            {
+                if (i == metalValue.Count - 1)
+                    break;
+
+                double currentValue = metalValue[i];
+                double nextValue = metalValue[i + 1];
+
+                if (currentValue < nextValue)
+                {
+                    metalValue[i] = metalValue[i] * (-1);
+                }
+
+            }
+            var metalSum = metalValue.Sum();
 
             var partTwo = Regex.Split(inputExtract[1], " ").ToList();
 
             var credits = Convert.ToInt32(partTwo[0]);
 
-            metalValue = credits / metalValue;
+            var FinalValue = credits / metalSum;
 
-            model.Metals.Add(new Metal { MetalName = metalName, MetalValue = metalValue });
+            model.Metals.Add(new Metal { MetalName = metalName, MetalValue = FinalValue });
 
             return "";
         }
@@ -125,6 +145,7 @@ namespace GalaxyBizz
             var partOne = Regex.Split(inputExtract[1], " ").ToList();
             double questionValue = 0;
             List<double> valueHolder = new List<double>();
+            double metalValue = 0;
 
             foreach (string symbol in partOne)
             {
@@ -135,7 +156,7 @@ namespace GalaxyBizz
                 }
                 else
                 {
-                    valueHolder.Add(model.Metals.Where(item => item.MetalName.Equals(symbol)).Select(item => item.MetalValue).FirstOrDefault());
+                    metalValue = model.Metals.Where(item => item.MetalName.Equals(symbol)).Select(item => item.MetalValue).FirstOrDefault();
 
                 }
 
@@ -156,8 +177,16 @@ namespace GalaxyBizz
 
             }
             questionValue = valueHolder.Sum();
+            string message = inputExtract[1] + " is " + questionValue;
+            if (metalValue != 0)
+            {
+                questionValue = valueHolder.Sum() * metalValue;
+                message = inputExtract[1] + " is " + questionValue + " credits";
+            }
 
-            return 0;
+
+
+            return message;
         }
     }
 
