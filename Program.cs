@@ -13,7 +13,7 @@ namespace GalaxyBizz
 
         {
             List<string> UserInput = new List<string>();
-
+            r
 
             UserInput.Add("glob is I");
             UserInput.Add("prok is V");
