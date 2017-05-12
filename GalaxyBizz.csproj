@@ -44,16 +44,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\GalaxyNumberSytemController.cs" />
-    <Compile Include="RomanNumarals.cs" />
+    <Compile Include="Model\GalaxyModel.cs" />
+    <Compile Include="Processor\IProcessor.cs" />
+    <Compile Include="Processor\ProcessMetal.cs" />
+    <Compile Include="Processor\ProcessQuestion.cs" />
+    <Compile Include="Processor\ProcessSymbol.cs" />
+    <Compile Include="ReferanceData\GalaxySymbol.cs" />
+    <Compile Include="ReferanceData\Metal.cs" />
+    <Compile Include="ReferanceData\Question.cs" />
+    <Compile Include="ReferanceData\RomanNumberSystem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
