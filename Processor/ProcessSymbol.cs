@@ -17,12 +17,12 @@ namespace GalaxyBizz.Processor
         }
         public dynamic Process(GalaxyModel model, string userEnteredLine, List<string> inputExtract)
         {
-            int value = romans.GetRomanCurrencyValue(inputExtract[1][0]);
+            var roman = romans.GetRomanCurrencyValue(inputExtract[1][0]);
 
             var result = model.GalaxySymbols.Exists(item => item.SymbolName.Equals(inputExtract[0]));
             if (!result)
             {
-                model.GalaxySymbols.Add(new GalaxySymbol { SymbolName = inputExtract[0], RomanEquivalent = inputExtract[1][0], SymbolValue = value });
+                model.GalaxySymbols.Add(new GalaxySymbol { SymbolName = inputExtract[0], RomanEquivalent = inputExtract[1][0], SymbolValue = roman.SymbolValue });
             }
 
             return "";
