@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace GalaxyBizz.Controller
 {
+    /// <summary>
+    /// Main Entry point class for outer world
+    /// </summary>
     class GalaxyNumberSytemController
     {
         GalaxyModel model;

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace GalaxyBizz.Model
 {
+    /// <summary>
+    /// Model class who holds all the references
+    /// </summary>
     class GalaxyModel
     {
         public List<GalaxySymbol> GalaxySymbols { get; set; }

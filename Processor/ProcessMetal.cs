@@ -62,7 +62,7 @@ namespace GalaxyBizz.Processor
 
             model.Metals.Add(new Metal { MetalName = metalName, MetalValue = FinalValue });
 
-            return "";
+            return message;
         }
     }
 }

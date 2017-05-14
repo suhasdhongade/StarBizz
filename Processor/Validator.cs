@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace GalaxyBizz.Processor
 {
+    /// <summary>
+    /// Validation class
+    /// </summary>
     internal class Validator
     {
         public static string NotLegalValue = "I have no idea what you are talking about";
@@ -49,25 +52,6 @@ namespace GalaxyBizz.Processor
 
                     }
                 }
-
-                //if (symbolBaseData != null)
-                //{
-                //    var romanBaseData = model.RomanSystem.GetRomanCurrencyValue(symbolBaseData.RomanEquivalent);
-                //   
-
-                //    var nextSymbolBaseData = model.GalaxySymbols.Find(item => item.SymbolName.Equals(symbol));
-
-                //    var SymbolValue = model.RomanSystem.GetRomanCurrencyValue(symbolBaseData.RomanEquivalent);
-                //    var nextSymbolValue = model.RomanSystem.GetRomanCurrencyValue(nextSymbolBaseData.RomanEquivalent);
-
-                //    if (SymbolValue.SymbolValue < nextSymbolValue.SymbolValue)
-                //    {
-                //        if(SymbolValue.Substract)
-
-
-                //    }
-
-                //}
             }
 
             return string.Empty;

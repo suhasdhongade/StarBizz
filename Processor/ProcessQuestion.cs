@@ -9,6 +9,13 @@ namespace GalaxyBizz.Processor
 {
     class ProcessQuestion : IProcessor
     {
+        /// <summary>
+        /// Method to process all the questions
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="userEnteredLine"></param>
+        /// <param name="inputExtract"></param>
+        /// <returns></returns>
         public dynamic Process(GalaxyModel model, string userEnteredLine, List<string> inputExtract)
         {
             var questionStatement = Regex.Split(inputExtract[1], " ").ToList();

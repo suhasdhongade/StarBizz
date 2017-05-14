@@ -13,6 +13,13 @@ namespace GalaxyBizz.Processor
         public ProcessSymbol()
         {
         }
+        /// <summary>
+        /// Processes Symbols and adds to Model object
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="userEnteredLine"></param>
+        /// <param name="inputExtract"></param>
+        /// <returns></returns>
         public dynamic Process(GalaxyModel model, string userEnteredLine, List<string> inputExtract)
         {
             var roman = model.RomanSystem.GetRomanCurrencyValue(inputExtract[1][0]);
