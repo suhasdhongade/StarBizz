@@ -23,7 +23,7 @@ namespace GalaxyBizz.Controller
             symbolObj = new ProcessSymbol();
             questionObj = new ProcessQuestion();
         }
-        public dynamic StartProcess(string UserEnteredLine)
+        public dynamic StartTranslation(string UserEnteredLine)
         {
             List<string> inputExtract = Regex.Split(UserEnteredLine, " is ").ToList();
             try
