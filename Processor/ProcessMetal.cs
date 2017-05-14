@@ -23,7 +23,7 @@ namespace GalaxyBizz.Processor
                 if (!string.IsNullOrEmpty(message))
                     return message;
 
-                message = Validator.ValidateSymbol(model, symbolStatement, symbol, i);
+                message = Validator.ValidateSubstaction(model, symbolStatement, symbol, i);
                 if (!string.IsNullOrEmpty(message))
                     return message;
 

@@ -24,7 +24,7 @@ namespace GalaxyBizz.Processor
                 if (!string.IsNullOrEmpty(message))
                     return message;
 
-                message = Validator.ValidateSymbol(model, questionStatement, symbol, i);
+                message = Validator.ValidateSubstaction(model, questionStatement, symbol, i);
                 if (!string.IsNullOrEmpty(message))
                     return message; 
 
