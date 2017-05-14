@@ -12,11 +12,21 @@ namespace GalaxyBizz.Processor
         public dynamic Process(GalaxyModel model, string userEnteredLine, List<string> inputExtract)
         {
             List<double> metalValue = new List<double>();
-            var partOne = Regex.Split(inputExtract[0], " ").ToList();
+            var symbolStatement = Regex.Split(inputExtract[0], " ").ToList();
             string metalName = string.Empty;
-
-            foreach (string symbol in partOne)
+            string message = string.Empty;
+            for (int i = 0; i < symbolStatement.Count; i++)
             {
+                var symbol = symbolStatement[i];
+
+                message = Validator.Occurances(model, symbolStatement, symbol);
+                if (!string.IsNullOrEmpty(message))
+                    return message;
+
+                message = Validator.ValidateSymbol(model, symbolStatement, symbol, i);
+                if (!string.IsNullOrEmpty(message))
+                    return message;
+
                 var result = model.GalaxySymbols.Exists(item => item.SymbolName.Equals(symbol));
                 if (result)
                 {

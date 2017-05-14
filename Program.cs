@@ -28,6 +28,7 @@ namespace GalaxyBizz
             UserInput.Add("glob prok Gold is 57800 Credits");
             UserInput.Add("pish pish Iron is 3910 Credits");
 
+            UserInput.Add("how much is spa spa spa spa jac spa pish tegj glob prok ?");
             UserInput.Add("how much is spa jac spa pish tegj glob prok ?");
             //                          M    C   M   X    L    I    5
             //                       +1000 -100 +1000 -10 +50 -1 +5

@@ -8,21 +8,10 @@ namespace GalaxyBizz.ReferanceData
 {
     public class RomanNumberSystem
     {
-        Dictionary<char, int> _RomanNumarals;
         readonly Dictionary<char, Roman> _Romans;
 
         public RomanNumberSystem()
         {
-            _RomanNumarals = new Dictionary<char, int>();
-
-            _RomanNumarals.Add('I', 1);
-            _RomanNumarals.Add('V', 5);
-            _RomanNumarals.Add('X', 10);
-            _RomanNumarals.Add('L', 50);
-            _RomanNumarals.Add('C', 100);
-            _RomanNumarals.Add('D', 500);
-            _RomanNumarals.Add('M', 1000);
-
             _Romans = new Dictionary<char, Roman>();
             _Romans.Add('I', new Roman { SymbolValue = 1, Reapat = true, Substract = true });
             _Romans.Add('V', new Roman { SymbolValue = 5 });

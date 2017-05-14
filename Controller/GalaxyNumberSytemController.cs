@@ -43,13 +43,13 @@ namespace GalaxyBizz.Controller
                 }
                 else
                 {
-                    return GalaxyModel.NotLegalValue;
+                    return Validator.NotLegalValue;
                 }
             }
             catch (Exception)
             {
 
-                return GalaxyModel.NotLegalValue;
+                return Validator.NotLegalValue;
             }
 
         }

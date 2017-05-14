@@ -49,6 +49,7 @@
     <Compile Include="Processor\ProcessMetal.cs" />
     <Compile Include="Processor\ProcessQuestion.cs" />
     <Compile Include="Processor\ProcessSymbol.cs" />
+    <Compile Include="Processor\Validator.cs" />
     <Compile Include="ReferanceData\GalaxySymbol.cs" />
     <Compile Include="ReferanceData\Metal.cs" />
     <Compile Include="ReferanceData\Question.cs" />

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System;
+using GalaxyBizz.ReferanceData;
 
 namespace GalaxyBizz.Processor
 {
@@ -9,16 +11,27 @@ namespace GalaxyBizz.Processor
     {
         public dynamic Process(GalaxyModel model, string userEnteredLine, List<string> inputExtract)
         {
-            var partOne = Regex.Split(inputExtract[1], " ").ToList();
+            var questionStatement = Regex.Split(inputExtract[1], " ").ToList();
             double questionValue = 0;
             List<double> valueHolder = new List<double>();
             double metalValue = 0;
-
-            foreach (string symbol in partOne)
+            string message;
+            for (int i = 0; i < questionStatement.Count; i++)
             {
+                var symbol = questionStatement[i];
+
+                message = Validator.Occurances(model, questionStatement, symbol);
+                if (!string.IsNullOrEmpty(message))
+                    return message;
+
+                message = Validator.ValidateSymbol(model, questionStatement, symbol, i);
+                if (!string.IsNullOrEmpty(message))
+                    return message; 
+
                 var result = model.GalaxySymbols.Exists(item => item.SymbolName.Equals(symbol));
                 if (result)
                 {
+
                     valueHolder.Add(model.GalaxySymbols.Where(item => item.SymbolName.Equals(symbol)).Select(item => item.SymbolValue).FirstOrDefault());
                 }
                 else
@@ -43,7 +56,7 @@ namespace GalaxyBizz.Processor
 
             }
             questionValue = valueHolder.Sum();
-            string message = inputExtract[1] + " is " + questionValue;
+            message = inputExtract[1] + " is " + questionValue;
             if (metalValue > 0)
             {
                 questionValue = valueHolder.Sum() * metalValue;
@@ -51,10 +64,14 @@ namespace GalaxyBizz.Processor
             }
             if (questionValue == 0)
             {
-                return GalaxyModel.NotLegalValue;
+                return Validator.NotLegalValue;
             }
 
             return message;
         }
+
+
+
+
     }
 }
